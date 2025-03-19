@@ -24,7 +24,7 @@ public class UserController {
 
         userDTO =userService.register(userDTO);
 
-        ResponseEntity<UserDTO> responseEntity = new ResponseEntity<>(userDTO, HttpStatus.CREATED);
-        return responseEntity;
+        return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
+
     }
 }
