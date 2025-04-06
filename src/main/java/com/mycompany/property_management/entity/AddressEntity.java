@@ -1,27 +1,28 @@
 package com.mycompany.property_management.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity                                                 //tell hibernate to make a table of following class
-@Table(name = "PROPERTY_TABLE")                         //create table with given name
+@Table(name = "ADDRESS_TABLE")                         //create table with given name
 @Getter
 @Setter
 @NoArgsConstructor
-public class PropertyEntity {
-
+public class AddressEntity {
     @Id                                                  //Use to denote a primary key
     @GeneratedValue(strategy = GenerationType.AUTO)      //generate a id automatically
     private long id;
-    @Column(name = "PROPERTY_TITTLE",nullable = false)
-    private String title;
-    private String description;
-    private Double price;
-    private String address;
+    private String houseNo;
+    private String street;
+    private String city;
+    private String postalCode;
+    private String country;
 
-    @ManyToOne //(fetch = FetchType.LAZY)                    // Many property Belong to one user
-    @JoinColumn(name = "USER_ID", nullable = false)
-    private UserEntity userEntity;
+    @OneToOne
+    @JoinColumn(name = "USER_ID",nullable = false)
+    private UserEntity userEntiy;
+
 }
